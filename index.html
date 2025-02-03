@@ -15,37 +15,6 @@
         <div id="result" class="result"></div>
         <div id="timer" class="timer">10</div>
     </div>
-            questionElement.textContent = questionData.question;
-            answersElement.innerHTML = '';
-
-            questionData.answers.forEach(answer => {
-                const answerElement = document.createElement('div');
-                answerElement.textContent = answer;
-                answerElement.className = 'answer';
-                answerElement.onclick = () => checkAnswer(answerElement);
-                answersElement.appendChild(answerElement);
-            });
-        }
-
-        function checkAnswer(answerElement) {
-            const questionData = questions[currentQuestion];
-            if (answerElement.textContent === questionData.correct) {
-                answerElement.classList.add('correct');
-            } else {
-                answerElement.classList.add('incorrect');
-            }
-
-            setTimeout(() => {
-                currentQuestion++;
-                if (currentQuestion < questions.length) {
-                    showQuestion();
-                } else {
-                    alert('クイズが終了しました！');
-                }
-            }, 1000);
-        }
-
-        showQuestion();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
