@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漢字でGOクイズ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .quiz-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .answer {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .correct {
+            background-color: #4caf50;
+            color: #fff;
+        }
+        .incorrect {
+            background-color: #f44336;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>漢字でGOクイズ</h1>
+        <div id="question" class="question">ここに問題が表示されます</div>
+        <div id="answers" class="answers">
+            <div class="answer" onclick="checkAnswer(this)">答え1</div>
+            <div class="answer" onclick="checkAnswer(this)">答え2</div>
+            <div class="answer" onclick="checkAnswer(this)">答え3</div>
+            <div class="answer" onclick="checkAnswer(this)">答え4</div>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            {
+                question: "「春」という漢字の読み方は？",
+                answers: ["はる", "あき", "ふゆ", "なつ"],
+                correct: "はる"
+            },
+            {
+                question: "「犬」という漢字の読み方は？",
+                answers: ["いぬ", "ねこ", "うま", "とり"],
+                correct: "いぬ"
+            },
+            // 他の問題を追加
+        ];
+
+        let currentQuestion = 0;
+
+        function showQuestion() {
+            const questionElement = document.getElementById('question');
+            const answersElement = document.getElementById('answers');
+            const questionData = questions[currentQuestion];
+
+            questionElement.textContent = questionData.question;
+            answersElement.innerHTML = '';
+
+            questionData.answers.forEach(answer => {
+                const answerElement = document.createElement('div');
+                answerElement.textContent = answer;
+                answerElement.className = 'answer';
+                answerElement.onclick = () => checkAnswer(answerElement);
+                answersElement.appendChild(answerElement);
+            });
+        }
+
+        function checkAnswer(answerElement) {
+            const questionData = questions[currentQuestion];
+            if (answerElement.textContent === questionData.correct) {
+                answerElement.classList.add('correct');
+            } else {
+                answerElement.classList.add('incorrect');
+            }
+
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestion();
+                } else {
+                    alert('クイズが終了しました！');
+                }
+            }, 1000);
+        }
+
+        showQuestion();
+    </script>
+</body>
+</html>
