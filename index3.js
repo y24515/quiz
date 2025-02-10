@@ -48,14 +48,64 @@ const questions = [
     { question:"クック・驚・ルッチ", correct:"くっくあんべりーばぶるっち" },
     { question:"完全不明", correct:"かんぜんふめい" },
     { question:"文藍月 Drache der'Zen", correct:"ぶんらんげつどらっへだーぜん" },
-    { question:"失われた世界", correct:"ロストワールド" }
-
+    { question:"失われた世界", correct:"ロストワールド" },
+    { question:"同期の妖精", correct:"しんくろふぇありー"},
+    { question:"R.S.F.K", correct:"ろいやるすとれーとふらっしゅかいざー"},
+    { question:"夢幻の無", correct:"でいどりーむだーくまたー"},
+    { question:"「正義全帝」", correct:"じゃすてぃすあんどえぶりしんぐえるす"},
+    { question:"白騎士の精霊王ℵHEVEN", correct:"しろきしのせいれいおうあれふへゔん"},
+    { question:"神にも届く歌声", correct:"ごっとのうず"},
+    { question:"終葬 5.S.D.", correct:"ついそうふぁいぶせんすだうん"},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""},
+    // { question:"", correct:""}
 ];
 
 
 let currentQuestionIndex = 0;
 let selectedQuestions = [];
 let timerInterval;
+let correctAnswersCount = 0;
 
 function getRandomQuestions() {
     let shuffled = questions.sort(() => 0.5 - Math.random());
@@ -67,12 +117,15 @@ function showQuestion() {
     const resultElement = document.getElementById('result');
     const answerInput = document.getElementById('answerInput');
     const timerElement = document.getElementById('timer');
+    const questionNumberElement = document.getElementById('questioncounter');
 
     const questionData = questions[currentQuestionIndex];
     questionElement.textContent = questionData.question;
     resultElement.textContent = '';
     answerInput.value = '';
     timerElement.textContent = '60';
+
+    questionNumberElement.textContent = `${currentQuestionIndex + 1}問目`
 
     clearInterval(timerInterval);
     startTimer();
@@ -102,15 +155,21 @@ function checkAnswer(answer) {
     const resultElement = document.getElementById('result');
     const questionData = questions[currentQuestionIndex];
 
+    clearInterval(timerInterval);
+
     if (answer === questionData.correct) {
         resultElement.textContent = '正解！';
         resultElement.className = 'correct';
+        correctAnswersCount++;
     } else {
-        resultElement.textContent = '不正解';
+        resultElement.textContent = '不正解' ;
         resultElement.className = 'incorrect';
     }
 
     setTimeout(() => {
+        const answerUrl = `answer.html?answer=${encodeURIComponent(questionData.correct)}`;
+        window.open(answerUrl, '_blank');
+
         currentQuestionIndex++;
         if (currentQuestionIndex < selectedQuestions.length) {
             showQuestion();
