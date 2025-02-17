@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クイズ結果</title>
+    <link rel="stylesheet" href="result.css">
+</head>
+<body>
+    <h1>クイズ結果</h1>
+    <p id="score"></p>
+
+    <script>
+        // 結果を表示
+        const score = localStorage.getItem('quizScore') || 0;
+        document.getElementById('score').textContent = `あなたの正解数は ${score} 問です。`;
+    </script>
+
+    <div class = "button-class">
+       <button type = "button" onclick = "location.href='index3.html'">もう一度挑戦する</button>
+       <button type="button" onclick="location.href='index.html'">ホームに戻る</button>
+    </div>
+</body>
+</html>

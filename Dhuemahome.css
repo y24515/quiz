@@ -1,0 +1,51 @@
+body {
+    background-color:rgb(226, 114, 114); /* 画像のURLを指定 */
+    background-size: cover; /* 背景画像が全体をカバー */
+    background-position: center center; /* 画像を中央に配置 */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white; /* 文字の色を白に設定 */
+}
+
+h1{
+    font-size: 100px;
+    position: relative;
+    text-align: center;
+}
+p{
+    font-size: 30px;
+    position: relative;
+    text-align: center;
+}
+
+.button-class {
+    display: flex;
+    gap: 1px; /* ボタン間の隙間 */
+}
+  
+button {
+    display: block;
+    margin: 0 auto;
+
+    /* ブラウザ特有のスタイルを無効に
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none; */
+  
+    /* 整える */
+    padding: 0.6em 1em; /* 塗りの余白 */
+    font-size: 3em; /* フォントサイズ */
+    background-color: #1aa1ff; /* 背景色 */
+    color: #FFF; /* テキストカラー */
+    cursor: pointer; /* カーソルを指マークに */
+    border-radius: 3px; /* 角の丸み */
+    border: 0; /* 枠線を消す */
+    transition: 0.3s; /* ホバーの変化を滑らかに */
+}
+
+
+  /* ホバー時（カーソルをのせた時）の見た目 */
+button:hover {
+    background-color: #064fda; /* 背景色 */
+}
