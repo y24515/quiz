@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+.gazou1 {
+  display: inline-block;
+  padding: 2em;
+  color: black;
+  border: 2px solid #151616;
+  border-radius: 18px;
+  transition: 0.3s;
+  }
+  
+  .gazou1:hover {
+  background: #87ceeb;
+  color: #87ceeb;
+  }
+
+  .gazou2 {
+    display: inline-block;
+    padding: 2em;
+    color: black;
+    border: 2px solid rgb(8, 8, 8);
+    border-radius: 18px;
+    transition: 0.3s;
+    }
+    
+    .gazou2:hover {
+    background: #87ceeb;
+    color: #87ceeb
+    }
+
+    .gazou3 {
+      display: inline-block;
+      padding: 2em;
+      color: black;
+      border: 2px solid #151616;
+      border-radius: 18px;
+      transition: 0.3s;
+      }
+      
+      .gazou3:hover {
+      background: #87ceeb;
+      color: #87ceeb;
+      }
+
+
+h2 {
+  color: rgb(13, 13, 13);
+  
+}
+.btn--orange:hover,
+a.btn--orange:hover {
+  color: #fff;
+  background: #101010;
+}
+
+a.btn--radius {
+   border-radius: 100vh;
+}
+
+.header{
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 1000;
+  height: auto;
+  width: 100%;
+     
+ }
+
+p{
+  text-align: center;
+  animation: SlideIn 1.6s;
+}
+
+@keyframes SlideIn {
+  0% {
+    opacity: 0;/*初期状態では透明に*/
+    transform: translateX(64px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+ .home{
+    position: absolute;
+   top:50%;
+   left: 50%;
+  -ms-transform: translate(-50%,-50%);/*ベンダープレフィックス*/
+   -webkit-transform: translate(-50%,-50%);/*ベンダープレフィックス*/
+   transform: translate(-50%,-50%);/*センター寄せの修正*/
+   color: black;
+   font-size: 1.8rem;
+   margin: 0!important;/*文字がずれている場合や*/
+   padding: 0!important;/*文字が折り返される場合*/
+   font-family: cursive;
+   font-size: 50px;
+ }
+
+ body{
+  font-family: cursive;
+  background-image: url("https://beiz.jp/images_P/spray/spray_00275.jpg");
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+ .my{
+  animation: fadeIn 2.2s cubic-bezier(0.33, 0.1, 0.28, 0.3) forwards;
+  text-align: center;
+
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.wrap {
+  overflow: hidden;
+}
+

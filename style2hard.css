@@ -3,18 +3,19 @@ body {
     text-align: center;
     background-color: #f0f0f0;
     padding: 20px;
-    background-image: url(hyakusyo.jpg);
+    background-image: url(10chiyodasyogun.jpg);
     background-size: cover;
-}
-   
+    
+    }
 
 .quiz-container {
-     background-color: #fff;
+    background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
     max-width: 600px;
-    margin: auto; 
+    margin: auto;
+    
 }
 
 .question {
@@ -49,12 +50,14 @@ body {
 .correct {
     background-color: #4caf50;
     color: #fff;
-    width: 100px;
+    width:100px;
     
 }
 
 .incorrect {
+    
     background-color: #f44336;
     color: #fff;
     width: 100px;
+   
 }

@@ -1,27 +1,29 @@
 const allQuestions = [
-    { question: "半端", correct: "はんぱ" },
-    { question: "狭い", correct: "せまい" },
-    { question: "応援", correct: "おうえん" },
-    { question: "象徴", correct: "しょうちょう" },
-    { question: "猛暑", correct: "もうしょ" },
-    { question: "漫画", correct: "まんが" },
-    { question: "獣医", correct: "じゅうい" },
-    { question: "娘", correct: "むすめ" },
-    { question: "圧迫", correct: "あっぱく" },
-    { question: "恒星", correct: "こうせい" },
-    { question: "麗しい（送り仮名不要）", correct: "うるわ" },
-    { question: "芋", correct: "いも" },
-    { question: "皮膚", correct: "ひふ" },
-    { question: "毛髪", correct: "もうはつ" },
-    { question: "連鎖", correct: "れんさ" },
-    { question: "握手", correct: "あくしゅ" },
-    { question: "観賞", correct: "かんしょう" },
-    { question: "避ける（送り仮名不要）", correct: "さ" },
-    { question: "慢性", correct: "まんせい" }
+    { question: "拳",correct: "こぶし"},
+    { question: "刹那",correct: "せつな"},
+    { question: "憂鬱",correct: "ゆううつ"},
+    { question: "籠る（送り仮名不要）",correct: "こも"},
+    { question: "妖艶",correct: "ようえん"},
+    { question: "拉致",correct: "らち"},
+    { question: "虎",correct: "とら"},
+    { question: "疫病神",correct: "やくびょうがみ"},
+    { question: "解熱剤", correct: "げねつざい"},
+    { question: "羨望",  correct: "せんぼう"},
+    { question: "溺れる（送り仮名不要）", correct: "おぼ",},
+    { question: "嫌悪", correct: "けんお"},
+    { question: "未曾有", correct: "みぞう"},
+    { question: "真摯", correct: "しんし"},
+    { question: "隙", correct: "すき"},
+    { question: "稽古", correct: "けいこ"},
+    { question: "餌", correct: "えさ"},
+    { question: "語彙", correct: "ごい"},
+    { question: "山車",correct: "だし"},
+    
+    // 他の問題を追加
 ];
 
-// シャッフルして10問選択
-const questions = allQuestions.sort(() => Math.random() - 0.5).slice(0, 10); // 出題数を10問に固定
+const questions = allQuestions.sort(() => Math.random() - 0.5).slice(0, 10);
+
 
 let currentQuestion = 0;
 let timerInterval;
@@ -83,9 +85,8 @@ function checkAnswer(answer) {
         }
     }, 1000);
 }
-
 window.addEventListener('keydown', function(event) {
-    if (event.key === "Enter") {
+    if (event.key === "Enter") {//Enterを押すと送信
         submitAnswer();
     }
 });

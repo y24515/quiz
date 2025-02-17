@@ -1,26 +1,25 @@
 const allQuestions = [
-    { question: "半端", correct: "はんぱ" },
-    { question: "狭い", correct: "せまい" },
-    { question: "応援", correct: "おうえん" },
-    { question: "象徴", correct: "しょうちょう" },
-    { question: "猛暑", correct: "もうしょ" },
-    { question: "漫画", correct: "まんが" },
-    { question: "獣医", correct: "じゅうい" },
-    { question: "娘", correct: "むすめ" },
-    { question: "圧迫", correct: "あっぱく" },
-    { question: "恒星", correct: "こうせい" },
-    { question: "麗しい（送り仮名不要）", correct: "うるわ" },
-    { question: "芋", correct: "いも" },
-    { question: "皮膚", correct: "ひふ" },
-    { question: "毛髪", correct: "もうはつ" },
-    { question: "連鎖", correct: "れんさ" },
-    { question: "握手", correct: "あくしゅ" },
-    { question: "観賞", correct: "かんしょう" },
-    { question: "避ける（送り仮名不要）", correct: "さ" },
-    { question: "慢性", correct: "まんせい" }
+    { question: "溌剌",correct: "はつらつ" },
+    { question: "誑かす（送り仮名不要）",correct: "たぶら" },
+    { question: "研鑽",correct: "けんさん"},
+    { question: "仄めかす（送り仮名不要）",correct: "ほの"},
+    { question: "老獪",correct: "ろうかい"},
+    { question: "匍匐",correct: "ほふく"},
+    { question: "揶揄",correct: "やゆ"},
+    { question: "華奢",correct: "きゃしゃ"},
+    { question: "軋轢",correct: "あつれき", },
+    { question: "鶉", correct: "うずら"},
+    { question: "躓く（送り仮名不要）",correct: "つまず"},
+    { question: "顰める（送り仮名不要）" ,correct: "しか" },
+    { question: "贔屓",correct: "ひいき" },
+    { question: "膠着",correct: "こうちゃく"},
+    { question: "嘴", correct: "くちばし" },
+    { question: "癇癪",correct: "かんしゃく"},
+    { question: "天誅",correct: "てんちゅう"},
+    { question: "邂逅",correct: "かいこう"},
+    { question: "慢性",correct: "まんせい"},
 ];
 
-// シャッフルして10問選択
 const questions = allQuestions.sort(() => Math.random() - 0.5).slice(0, 10); // 出題数を10問に固定
 
 let currentQuestion = 0;
@@ -85,7 +84,7 @@ function checkAnswer(answer) {
 }
 
 window.addEventListener('keydown', function(event) {
-    if (event.key === "Enter") {
+    if (event.key === "Enter") {//Enterを押すと送信
         submitAnswer();
     }
 });
