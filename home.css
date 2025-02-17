@@ -1,0 +1,12 @@
+body {
+    background-color: #ffffff;
+    text-align: center;
+}
+.Mondai {
+    background-color: #b9e3eb;
+    border: 1px solid #020202;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 650px;
+    margin: 250px 0 0 600px; 
+}
