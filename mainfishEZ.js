@@ -28,8 +28,8 @@ const questions = [
          ans: "まぐろ"
      },
     /*8*/ {
-         question: "「鰈」という漢字の読み方はなんだ？",
-         ans: "かれい"
+         question: "「河童」という漢字の読み方はなんだ？",
+         ans: "かっぱ"
      },
     /*9*/ {
          question: "「鰯」という漢字の読み方はなんだ？",
@@ -77,8 +77,7 @@ const questions = [
     },
     /*20*/{
         question:"「鰹」という漢字の読み方はなんだ？",
-        ans: "かつお",
-        ans: "かっつお"
+        ans: "かつお"
     },
      // 他の問題を追加
  ];
@@ -86,13 +85,21 @@ const questions = [
  let QuestionKazueru=0;
  let currentQuestion = 0;
  let timerInterval;
- 
+
+ function getRandomQuestions() {
+    let shuffled = questions.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 10);
+}
+
+
  function showQuestion() {
      const question = document.getElementById('question');
      const result = document.getElementById('result');
      const ansInput = document.getElementById('ansInput');
      const time = document.getElementById('time');
      const now = document.getElementById('now');
+     const hint = document.getElementById('hint');
+     const answerbutton = document.getElementById('FinalAnswer');
  
      const questionData = questions[currentQuestion];
      question.textContent = questionData.question;
@@ -101,6 +108,8 @@ const questions = [
      time.textContent = '15';
      QuestionNow++;
      now.textContent ='今'+QuestionNow+'問目です。';
+     hint.style.display = 'none';
+     answerbutton.disabled = false;
  
      clearInterval(timerInterval);
      startTimer();
@@ -121,10 +130,22 @@ const questions = [
      }, 1000);
  }
  
- function submitAnswer() {
+ function FinalAnswer() {
      const ansInput = document.getElementById('ansInput');
+     const answerbutton = document.getElementById('FinalAnswer');
+     answerbutton.disabled = true;
      checkAnswer(ansInput.value.trim());
  }
+
+
+ function hint() {
+    const hintt=document.getElementById('hintt');
+    const hint = document.getElementById('hint');
+    const questionData = questions[currentQuestion];
+    hint.style.display = 'block';
+    hintt.textContent="一文字目："+questionData.ans.charAt(0);
+}
+
  
  function checkAnswer(answer) {
      const result = document.getElementById('result');
@@ -132,23 +153,28 @@ const questions = [
     
      if (answer === questionData.ans) {
          result.textContent = '正解！';
-         result.className = 'correct';
+         result.className = 'seikai';
+         clearInterval(timerInterval);
         QuestionKazueru++;
+   
      } else {
-         result.textContent = '不正解';
-         result.className = 'incorrect';
+         result.textContent = '不正解！こたえは”'+questionData.ans+"”でした！";
+         clearInterval(timerInterval);
+         result.className = 'miss';
+      
      }
  
      setTimeout(() => {
          currentQuestion++;
-         if (currentQuestion < questions.length) {
+         if (currentQuestion < 10) {
              showQuestion();
          } else {
+            clearInterval(timerInterval);
              alert('クイズが終了しました！');
-             alert('あなたは30問中'+QuestionKazueru+'問正解しました。');
+             alert('あなたは10問中'+QuestionKazueru+'問正解しました。');
          }
-     }, 1000);
+     }, 3000);
  }
- 
+ selectedQuestions = getRandomQuestions();
  showQuestion();
  

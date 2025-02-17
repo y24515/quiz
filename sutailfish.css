@@ -1,17 +1,17 @@
 body {
-    font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f0f0f0;
+    background-image:url(sakana.webp) ;
+    background-size: cover;
     padding: 20px;
 }
 
-.quiz-container {
-    background-color: #fff;
-    border: 1px solid #ccc;
+.Mondai {
+    background-color: #6ad6e9;
+    border: 1px solid #020202;
     border-radius: 5px;
     padding: 20px;
     max-width: 600px;
-    margin: auto;
+    margin: 250px 0 0 600px; 
 }
 
 .question {
@@ -27,7 +27,8 @@ body {
     width: calc(100% - 24px);
 }
 
-.submit-button {
+.FinalAnswer {
+    text-align: center;
     padding: 10px 20px;
     font-size: 18px;
     border: none;
@@ -43,12 +44,25 @@ body {
     margin-top: 20px;
 }
 
-.correct {
+.seikai {
     background-color: #4caf50;
     color: #fff;
 }
 
-.incorrect {
+.miss {
     background-color: #f44336;
     color: #fff;
 }
+
+.hint {
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+}
+

@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TomでGO</title>
+    <title>おさかなクイズ</title>
     <link rel="stylesheet" href="sutailfish.css">
 </head>
 <body>
-    <div class="quiz-container">
-        <h1>難易度：鮭</h1>
+    <div class="Mondai">
+        <button type = "button" onclick = "location.href='indexfish.html'">メインに戻る</button>
+        <div id="now" class="now"></div>
+        <h2>難易度：鮭</h2>
         <div id="question" class="question">あああ</div>
-        <input type="text" id="ansInput" class="ans-input" placeholder="答えを入力する！">
-        <button class="submit-button" onclick="submitAnswer()">FinalAnswer?</button>
+        <input type="text" id="ansInput" class="ans-input">
+        <button id="FinalAnswer" class="FinalAnswer" onclick="FinalAnswer()">FinalAnswer?</button>
         <div id="result" class="result"></div>
-        <div id="time" class="time">10</div>
+        <br>
+        <div id="time" class="time">15</div>
+        <br><br>
+        <button onclick="hint();">ヒント表示</button>
+        <div id="hint" style="display: none;">
+            <div id="hintt" class="hintt"></div>
+        </div>
     </div>
     <script src="mainfishNO.js"></script>
 </body>
