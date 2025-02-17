@@ -80,24 +80,28 @@ const questions = [
         question:"「山女魚」という漢字の読み方はなんだ？",
         ans: "やまめ"
     },
-     // 他の問題を追加
+
  ];
- let QuestionNow=0;
- let QuestionKazueru=0;
- let currentQuestion = 0;
+ let QuestionNow=0;//今何問目ですのやつ
+ let QuestionKazueru=0;//正解数数えるやつ
+ let QuestionIti = 0;//問題の位置
  let timerInterval;
 
+
+//ランダムに問題出題するやつ
  function getRandomQuestions() {
     let shuffled = questions.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, 10);
 }
 
+//Enterキーで答えられるやつ
 window.addEventListener('keydown', function(event) {
     if (event.key === "Enter") {
         FinalAnswer();
     }
 });
 
+//問題、とかを表示するやつ
  function showQuestion() {
      const question = document.getElementById('question');
      const result = document.getElementById('result');
@@ -107,7 +111,7 @@ window.addEventListener('keydown', function(event) {
      const hint = document.getElementById('hint');
      const answerbutton = document.getElementById('FinalAnswer');
  
-     const questionData = questions[currentQuestion];
+     const questionData = questions[QuestionIti];
      question.textContent = questionData.question;
      result.textContent = '';
      ansInput.value = '';
@@ -121,6 +125,7 @@ window.addEventListener('keydown', function(event) {
      startTimer();
  }
  
+ //制限時間
  function startTimer() {
      const time = document.getElementById('time');
      let timeout = 15;
@@ -136,6 +141,8 @@ window.addEventListener('keydown', function(event) {
      }, 1000);
  }
  
+
+ //入力した答えを送信
  function FinalAnswer() {
      const ansInput = document.getElementById('ansInput');
      const answerbutton = document.getElementById('FinalAnswer');
@@ -143,19 +150,19 @@ window.addEventListener('keydown', function(event) {
      checkAnswer(ansInput.value.trim());
  }
 
-
+//ヒントを表示する
  function hint() {
     const hintt=document.getElementById('hintt');
     const hint = document.getElementById('hint');
-    const questionData = questions[currentQuestion];
+    const questionData = questions[QuestionIti];
     hint.style.display = 'block';
     hintt.textContent="一文字目："+questionData.ans.charAt(0);
 }
 
- 
+ //答えがあっているかどうか
  function checkAnswer(answer) {
      const result = document.getElementById('result');
-     const questionData = questions[currentQuestion];
+     const questionData = questions[QuestionIti];
     
      if (answer === questionData.ans) {
          result.textContent = '正解！';
@@ -170,9 +177,11 @@ window.addEventListener('keydown', function(event) {
       
      }
  
+
+     //終わったら
      setTimeout(() => {
-         currentQuestion++;
-         if (currentQuestion < 10) {
+        QuestionIti++;
+         if (QuestionIti< 10) {
              showQuestion();
          } else {
             clearInterval(timerInterval);
@@ -183,4 +192,3 @@ window.addEventListener('keydown', function(event) {
  }
  selectedQuestions = getRandomQuestions();
  showQuestion();
- 
