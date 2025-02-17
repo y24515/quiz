@@ -91,7 +91,12 @@ const questions = [
     return shuffled.slice(0, 10);
 }
 
- 
+window.addEventListener('keydown', function(event) {
+    if (event.key === "Enter") {
+        FinalAnswer();
+    }
+});
+
  function showQuestion() {
      const question = document.getElementById('question');
      const result = document.getElementById('result');
@@ -154,10 +159,12 @@ const questions = [
      if (answer === questionData.ans) {
          result.textContent = '正解！';
          result.className = 'seikai';
+         clearInterval(timerInterval);
         QuestionKazueru++;
    
      } else {
          result.textContent = '不正解！こたえは”'+questionData.ans+"”でした！";
+         clearInterval(timerInterval);
          result.className = 'miss';
       
      }
@@ -175,3 +182,4 @@ const questions = [
  }
  selectedQuestions = getRandomQuestions();
  showQuestion();
+ 

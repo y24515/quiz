@@ -91,6 +91,11 @@ const questions = [
     return shuffled.slice(0, 10);
 }
 
+window.addEventListener('keydown', function(event) {
+    if (event.key === "Enter") {
+        FinalAnswer();
+    }
+});
 
  function showQuestion() {
      const question = document.getElementById('question');
@@ -177,4 +182,5 @@ const questions = [
  }
  selectedQuestions = getRandomQuestions();
  showQuestion();
+ 
  
