@@ -1,0 +1,68 @@
+body {
+    text-align: center;
+    background-image:url(tigyo.jpg) ;
+    background-size: cover;
+    padding: 20px;
+}
+
+.Mondai {
+    background-color: #6ad6e9;
+    border: 1px solid #020202;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 250px 0 0 600px; 
+}
+
+.question {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.answer-input {
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 24px);
+}
+
+.FinalAnswer {
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.timer {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.seikai {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.miss {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.hint {
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
