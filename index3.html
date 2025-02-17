@@ -8,12 +8,15 @@
 </head>
 <body>
     <div class="quiz-container">
-        <h1>デュエマでGOクイズ</h1>
+        <h1>デュエマカード名クイズ</h1>
+        <div id = "questioncounter">今何問目？</div>
         <div id="question" class="question">ここに問題表示</div>
         <input type="text" id="answerInput" class="answer-input" placeholder="答えを入力してください">
         <button class="submit-button" onclick="submitAnswer()">送信</button>
         <div id="result" class="result"></div>
-        <div id="timer" class="timer">45</div>
+        <div id="timer" class="timer">60</div>
+        <div id="result"></div>
+        <p id="correctAnswer"></p>
     </div>
     <script src="index3.js"></script>
 </body>
