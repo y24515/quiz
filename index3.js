@@ -108,6 +108,9 @@ let currentQuestionIndex = 0;
 let selectedQuestions = [];
 let timerInterval;
 let quizScore = 0; // グローバル変数としてスコアを定義
+const music = new Audio('correct.mp3');
+const music1 = new Audio('incorrect.mp3');
+const music2 = new Audio('incorrect.mp3');
 
 function getRandomQuestions() {
     let shuffled = questions.sort(() => 0.5 - Math.random());
@@ -115,6 +118,10 @@ function getRandomQuestions() {
 }
 
 function showQuestion() {
+
+    music.currentTime = 0;
+    music.play();
+    
     const questionElement = document.getElementById('question');
     const resultElement = document.getElementById('result');
     const answerInput = document.getElementById('answerInput');
@@ -170,6 +177,10 @@ function checkAnswer(answer) {
     if (answer === questionData.correct) {
         resultElement.textContent = '正解！';
         resultElement.className = 'correct';
+
+        music.currentTime = 0;
+        music.play();
+
         quizScore++;  // 正解ならスコアを加算
 
         // localStorageにスコアを保存
@@ -180,6 +191,9 @@ function checkAnswer(answer) {
     } else {
         resultElement.textContent = '不正解';
         resultElement.className = 'incorrect';
+
+        music1.currentTime = 0;
+        music1.play();
 
         answerImage.src = questionData.img; 
         answerImage.style.display = 'block'; 
