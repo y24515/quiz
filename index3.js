@@ -1,6 +1,6 @@
 const questions = [
     { question: "理想と平和の決断", correct: "ぱーふぇくとあるかでぃあ", img:"./img/理想と平和の決断.jpg"},
-    { question:"魔誕と光喜と楽識と炎怒と哀樹の決断", correct: "ぱーふぇくとばろむ", img:"./img/魔誕と光喜と楽識と炎怒と哀樹の決断"},
+    { question:"魔誕と光喜と楽識と炎怒と哀樹の決断", correct: "ぱーふぇくとばろむ", img:"./img/魔誕と光喜と楽識と炎怒と哀樹の決断.jpg"},
     { question:"♪楽楽楽 楽楽楽楽 楽楽楽", correct:"らくらくらくらくらくらくらくらくらくらく", img:"./img/♪楽楽楽 楽楽楽楽 楽楽楽.jpg" },
     { question:"メイプル超もみ人", correct:"めいぷるちょうもみじん", img:"./img/メイプル超もみ人.jpg" },
     { question:"蒼き団長 ドギラゴン剣", correct:"あおきだんちょうどぎらごんばすたー", img:"./img/蒼き団長 ドギラゴン剣.jpg"},
@@ -107,7 +107,7 @@ const questions = [
 let currentQuestionIndex = 0;
 let selectedQuestions = [];
 let timerInterval;
-let correctAnswersCount = 0;
+let quizScore = 0; // グローバル変数としてスコアを定義
 
 function getRandomQuestions() {
     let shuffled = questions.sort(() => 0.5 - Math.random());
@@ -134,7 +134,7 @@ function showQuestion() {
 
     answerElement.textContent = "";
 
-    questionNumberElement.textContent = `${currentQuestionIndex + 1}問目`
+    questionNumberElement.textContent = `${currentQuestionIndex + 1}問目`;
 
     clearInterval(timerInterval);
     startTimer();
@@ -160,7 +160,6 @@ function submitAnswer() {
     checkAnswer(answerInput.value.trim());
 }
 
-
 function checkAnswer(answer) {
     const resultElement = document.getElementById('result');
     const questionData = questions[currentQuestionIndex];
@@ -171,12 +170,15 @@ function checkAnswer(answer) {
     if (answer === questionData.correct) {
         resultElement.textContent = '正解！';
         resultElement.className = 'correct';
-        correctAnswersCount++;
+        quizScore++;  // 正解ならスコアを加算
+
+        // localStorageにスコアを保存
+        localStorage.setItem('quizScore', quizScore);
 
         answerImage.src = questionData.img; 
         answerImage.style.display = 'block'; 
     } else {
-        resultElement.textContent = '不正解' ;
+        resultElement.textContent = '不正解';
         resultElement.className = 'incorrect';
 
         answerImage.src = questionData.img; 
