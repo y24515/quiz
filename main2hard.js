@@ -65,8 +65,8 @@ function startTimer() {
 
 function submitAnswer() {
     const answerInput = document.getElementById('answerInput');
-    }
     checkAnswer(answerInput.value.trim());
+    }
     //checkAnswerで入力した回答に応じて正解や解答を表示
     //answerInput.value で入力した文字を取得
     //.trim で回答に空白があった場合削除
