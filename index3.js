@@ -118,9 +118,6 @@ function getRandomQuestions() {
 }
 
 function showQuestion() {
-
-    music.currentTime = 0;
-    music.play();
     
     const questionElement = document.getElementById('question');
     const resultElement = document.getElementById('result');
@@ -178,8 +175,10 @@ function checkAnswer(answer) {
         resultElement.textContent = '正解！';
         resultElement.className = 'correct';
 
-        music.currentTime = 0;
-        music.play();
+        setTimeout(() => {
+            music.currentTime = 0;
+            music.play();
+        }, 500);
 
         quizScore++;  // 正解ならスコアを加算
 
@@ -192,8 +191,10 @@ function checkAnswer(answer) {
         resultElement.textContent = '不正解';
         resultElement.className = 'incorrect';
 
-        music1.currentTime = 0;
-        music1.play();
+        setTimeout(() => {
+            music1.currentTime = 0;
+            music1.play();
+        }, 500);
 
         answerImage.src = questionData.img; 
         answerImage.style.display = 'block'; 
