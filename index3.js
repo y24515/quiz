@@ -119,6 +119,9 @@ function getRandomQuestions() {
 
 function showQuestion() {
     
+    music2.currentTime = 0;
+    music2.play(); 
+
     const questionElement = document.getElementById('question');
     const resultElement = document.getElementById('result');
     const answerInput = document.getElementById('answerInput');
