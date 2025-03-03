@@ -90,8 +90,8 @@ const questions = [
 
 //ランダムに問題出題するやつ
  function getRandomQuestions() {
-    let shuffled = questions.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 10);
+    let shuffled = questions.sort(() => 0.5 - Math.random());//ランダムに入れ替えてる
+    return shuffled.slice(0, 10);//10個取ってる
 }
 
 //Enterキーで答えられるやつ
@@ -110,16 +110,15 @@ window.addEventListener('keydown', function(event) {
      const now = document.getElementById('now');
      const hint = document.getElementById('hint');
      const answerbutton = document.getElementById('FinalAnswer');
- 
-     const questionData = questions[QuestionIti];
-     question.textContent = questionData.question;
-     result.textContent = '';
-     ansInput.value = '';
-     time.textContent = '15';
-     QuestionNow++;
-     now.textContent ='今'+QuestionNow+'問目です。';
-     hint.style.display = 'none';
-     answerbutton.disabled = false;
+     const questionData = questions[QuestionIti];//問題のデータを持ってきてる
+     question.textContent = questionData.question;//問題表示してる
+     result.textContent = '';//答えが正解か不正解かを
+     ansInput.value = '';//回答欄を空にしている
+     time.textContent = '15';//制限時間15秒
+     QuestionNow++;//今何問目かを数えてる
+     now.textContent ='今'+QuestionNow+'問目です。';//今何問目かを表示している
+     hint.style.display = 'none';//ヒントを非表示にしている
+     answerbutton.disabled = false;//解答ボタン
  
      clearInterval(timerInterval);
      startTimer();
@@ -131,12 +130,12 @@ window.addEventListener('keydown', function(event) {
      let timeout = 15;
  
      timerInterval = setInterval(() => {
-         timeout--;
+         timeout--;//１秒ずつ減らしてる
          time.textContent = timeout;
  
-         if (timeout <= 0) {
-             clearInterval(timerInterval);
-             checkAnswer('');
+         if (timeout <= 0) {//０になったら下の処理をする
+             clearInterval(timerInterval);//タイマー停止
+             checkAnswer('');//答えを入力しなかった時に空白を送る
          }
      }, 1000);
  }
@@ -146,49 +145,51 @@ window.addEventListener('keydown', function(event) {
  function FinalAnswer() {
      const ansInput = document.getElementById('ansInput');
      const answerbutton = document.getElementById('FinalAnswer');
-     answerbutton.disabled = true;
-     checkAnswer(ansInput.value.trim());
+     answerbutton.disabled = true;//ボタンの無効化送信したら次の問題まで押せなくしている
+     checkAnswer(ansInput.value.trim());//checkanswerを呼び出して、入力した答えを渡してる。//.trim():入力値の前後の空白を削除している
  }
 
 //ヒントを表示する
  function hint() {
     const hintt=document.getElementById('hintt');
     const hint = document.getElementById('hint');
-    const questionData = questions[QuestionIti];
-    hint.style.display = 'block';
-    hintt.textContent="一文字目："+questionData.ans.charAt(0);
+    const questionData = questions[QuestionIti];//問題のデータを持ってきてる
+    hint.style.display = 'block';//押したら表示する..非表示から表示するようにしている
+    hintt.textContent="一文字目："+questionData.ans.charAt(0);//答えの1文字目を出す。questionData.ans.charAt(0);は最初の一文字を答えから取得してる。
 }
 
  //答えがあっているかどうか
- function checkAnswer(answer) {
-     const result = document.getElementById('result');
-     const questionData = questions[QuestionIti];
-    
-     if (answer === questionData.ans) {
-         result.textContent = '正解！';
-         result.className = 'seikai';
-         clearInterval(timerInterval);
-        QuestionKazueru++;
-   
-     } else {
-         result.textContent = '不正解！こたえは”'+questionData.ans+"”でした！";
-         clearInterval(timerInterval);
-         result.className = 'miss';
-      
-     }
- 
+// 答えが合っているかどうかチェックする関数
+function checkAnswer(answer) {
+    const result = document.getElementById('result');
+    const questionData = questions[QuestionIti];
 
-     //終わったら
-     setTimeout(() => {
+    if (answer === questionData.ans) {
+        result.textContent = '正解！';
+        const audioCorrect = new Audio('「さあ、いくぞ！」.mp3');
+        audioCorrect.play();//bgmを流す
+        result.className = 'seikai';
+        QuestionKazueru++;
+    } else {
+        result.textContent = '不正解！こたえは”' + questionData.ans + "”でした！";
+        const audioIncorrect = new Audio('「ぐああっ！」.mp3');
+        audioIncorrect.play();//bgmを流す
+        result.className = 'miss';
+    }
+    
+    clearInterval(timerInterval);
+
+    // 次の問題に進む
+    setTimeout(() => {
         QuestionIti++;
-         if (QuestionIti< 10) {
-             showQuestion();
-         } else {
-            clearInterval(timerInterval);
-             alert('クイズが終了しました！');
-             alert('あなたは10問中'+QuestionKazueru+'問正解しました。');
-         }
-     }, 3000);
- }
- selectedQuestions = getRandomQuestions();
- showQuestion();
+        if (QuestionIti < 10) {
+            showQuestion();
+        } else {
+            alert('クイズが終了しました！');
+            alert('あなたは10問中' + QuestionKazueru + '問正解しました。');
+        }
+    }, 3000);
+}
+
+ selectedQuestions = getRandomQuestions();//ランダムに取得
+ showQuestion();//問題を表示
