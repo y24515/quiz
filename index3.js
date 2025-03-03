@@ -108,9 +108,9 @@ let currentQuestionIndex = 0;
 let selectedQuestions = [];
 let timerInterval;
 let quizScore = 0; // グローバル変数としてスコアを定義
-const music = new Audio('correct.mp3');
-const music1 = new Audio('incorrect.mp3');
-const music2 = new Audio('incorrect.mp3');
+const music = new Audio('./audio/correct.mp3');
+const music1 = new Audio('./audio/incorrect.mp3');
+const music2 = new Audio('./audio/syutudai.mp3');
 
 function getRandomQuestions() {
     let shuffled = questions.sort(() => 0.5 - Math.random());
