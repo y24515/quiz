@@ -215,5 +215,6 @@ function checkAnswer(answer) {
     }, 3000);
 }
 
+
 selectedQuestions = getRandomQuestions();
 showQuestion();
